@@ -1,0 +1,46 @@
+#customers {
+
+  font-size: smaller;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 4px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.menu-item {
+  display: block;
+}
+.price {
+  float: right;
+}
+.description {
+  clear: both;
+}
+
+.overlay {
+  position:absolute;
+  top:0;
+  left:0;
+  width: fit-content !important;
+  height: fit-content;
+  z-index:1000;
+  background-color: burlywood;
+  padding: 150px;
+  overflow-wrap: break-word;
+}
