@@ -1,0 +1,38 @@
+<h1 style="padding-left: 40%;">Document search</h1>
+<div *ngIf="(values$ | async)?.length === 0">Documents loading, please wait...</div>
+<div *ngIf="(values$ | async)?.length > 0">
+  <form [formGroup]="form" (onsubmit)="search()">
+
+    <br />
+
+    <label>Search for a document:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" placeholder="search text..." formControlName="searchText" (blur)="patch($event.target.value)">&nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)="search()">Find document</button>
+  </form>
+  <table *ngIf="(filteredValues$ | async)?.length > 0" id="customers">
+    <thead>
+      <tr>
+        <th *ngFor="let item of (idKeys$ | async); let i = index">
+          {{item}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of (filteredValues$ | async); let i = index" (click)="setIndex(i)">
+        <td style="cursor: pointer" *ngFor="let key of (idKeys$ | async);">
+          {{(filteredValues$ | async)[i] === undefined ? 'not found' : (filteredValues$ | async)[i][key]}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="overlay" *ngIf="documentIndex !== undefined">
+    <div>
+      <button (click)="setIndex(undefined)">Close</button>
+    </div>
+    <ul>
+      <li style="width: auto;word-break: break-word;" *ngFor="let item of (allKeys$ | async);">
+        {{item}} : {{(filteredValues$ | async)[documentIndex] === undefined ? 'not found' : (filteredValues$ | async)[documentIndex][item]}}
+      </li>
+    </ul>
+  </div>
+</div>
