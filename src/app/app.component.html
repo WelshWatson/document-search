@@ -2,9 +2,7 @@
 <div *ngIf="(values$ | async)?.length === 0">Documents loading, please wait...</div>
 <div *ngIf="(values$ | async)?.length > 0">
   <form [formGroup]="form" (onsubmit)="search()">
-
     <br />
-
     <label>Search for a document:</label>&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" placeholder="search text..." formControlName="searchText" (blur)="patch($event.target.value)">&nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)="search()">Find document</button>

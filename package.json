@@ -2,9 +2,8 @@
   "name": "doc-search",
   "version": "0.0.0",
   "scripts": {
-    "postinstall": "ng build --aot --prod",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --aot --prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

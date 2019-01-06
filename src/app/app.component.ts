@@ -25,17 +25,16 @@ export class AppComponent implements OnInit {
   searchText: string;
   values = [];
   documentIndex: number = undefined;
-  file = [];
 
   constructor(private _httpService: HttpClient,
     builder: FormBuilder) {
-      this.form = builder.group({
-        searchText: ['', [Validators.required]]
-      });
-     }
+    this.form = builder.group({
+      searchText: ['', [Validators.required]]
+    });
+  }
 
   ngOnInit() {
-    this._httpService.get<any[]>('https://owen-dotnetcore.azurewebsites.net/api/json/get-json').subscribe(values => {
+    this._httpService.get<any[]>('http://jsondownloader.azurewebsites.net/get-json').subscribe(values => {
       this.values = values;
       this._values.next(values);
       this._idKeys.next(Object.keys(values[0])
